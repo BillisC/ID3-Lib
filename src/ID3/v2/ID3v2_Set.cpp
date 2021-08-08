@@ -88,7 +88,7 @@ char *ID3v2::newFrameTIF(const std::string &newFrameID, const std::string &conte
     char *newFrame = new char[newFullFrameSize];
 
     // -------- Frame header -------- //
-    /* Frame ID -> */  char *ID = str2ch(newFrameID, 4, 4, 0);
+    /* Frame ID -> */  char *ID = str2ch(newFrameID, 4, 0);
     /* Frame ID -> */  memcpy(newFrame, ID, 4);
     /* Frame ID -> */  delete[] ID;
 
@@ -114,7 +114,7 @@ char *ID3v2::newFrameULF(const std::string &newFrameID, const std::string &conte
     char *newFrame = new char[newFullFrameSize];
 
     // -------- Frame header -------- //
-    /* Frame ID -> */  char *ID = str2ch(newFrameID, 4, 4, 0);
+    /* Frame ID -> */  char *ID = str2ch(newFrameID, 4, 0);
     /* Frame ID -> */  memcpy(newFrame, ID, 4);
     /* Frame ID -> */  delete[] ID;
 
@@ -174,7 +174,7 @@ char *ID3v2::newFramePIC(const std::string &newFrameID, const std::string &image
     char *newFrame = new char[newFullFrameSize];
 
     // -------- Frame header -------- //
-    /* Frame ID -> */  char *ID = str2ch(newFrameID, 4, 4, 0);
+    /* Frame ID -> */  char *ID = str2ch(newFrameID, 4, 0);
     /* Frame ID -> */  memcpy(newFrame, ID, 4);
     /* Frame ID -> */  delete[] ID;
 
@@ -206,7 +206,7 @@ char *ID3v2::newFrameCOM(const std::string &newFrameID, const std::string &conte
     char *newFrame = new char[newFullFrameSize];
 
     // -------- Frame header -------- //
-    /* Frame ID -> */  char *ID = str2ch(newFrameID, 4, 4, 0);
+    /* Frame ID -> */  char *ID = str2ch(newFrameID, 4, 0);
     /* Frame ID -> */  memcpy(newFrame, ID, 4);
     /* Frame ID -> */  delete[] ID;
 

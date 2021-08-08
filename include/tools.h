@@ -36,11 +36,11 @@ inline uint32_t to_sync(const uint32_t &not_sync_safe)
 }
 
 // Convert a string to an unsigned char (8 bit)
-inline char *str2ch(std::string str, unsigned int max, unsigned int length, int offset){
+inline char *str2ch(std::string str, unsigned int max, int offset){
     char *ch = new char[max];
 
     unsigned int count = 0;
-    for(; count + offset < length; count++){
+    for(; count + offset < str.length(); count++){
         ch[count + offset] = str[count];
     }
     for(; count + offset < max; count++){

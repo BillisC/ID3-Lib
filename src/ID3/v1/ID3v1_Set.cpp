@@ -14,7 +14,7 @@ bool ID3v1::setTitle(const std::string content, const bool &remove){
     
     // Check if the tag should be removed
     if(!remove){
-        char *toWrite = str2ch(content, 30, content.length(), 0);
+        char *toWrite = str2ch(content, 30, 0);
 
         ptrSongFile.write(toWrite, content.length());
 
@@ -38,7 +38,7 @@ bool ID3v1::setArtist(const std::string content, const bool &remove){
 
     // Check if the tag should be removed
     if(!remove){
-        char *toWrite = str2ch(content, 30, content.length(), 0);
+        char *toWrite = str2ch(content, 30, 0);
 
         ptrSongFile.write(toWrite, content.length());
 
@@ -62,7 +62,7 @@ bool ID3v1::setAlbum(const std::string content, const bool &remove){
 
     // Check if the tag should be removed
     if(!remove){
-        char *toWrite = str2ch(content, 30, content.length(), 0);
+        char *toWrite = str2ch(content, 30, 0);
 
         ptrSongFile.write(toWrite, content.length());
 
@@ -86,7 +86,7 @@ bool ID3v1::setYear(const std::string content, const bool &remove){
 
     // Check if the tag should be removed
     if(!remove){
-        char *toWrite = str2ch(content, 4, content.length(), 0);
+        char *toWrite = str2ch(content, 4, 0);
 
         ptrSongFile.write(toWrite, 4);
 
@@ -110,7 +110,7 @@ bool ID3v1::setComment(const std::string content, const bool &remove){
 
     // Check if the tag should be removed
     if(!remove){
-        char *toWrite = str2ch(content, 30, content.length(), 0);
+        char *toWrite = str2ch(content, 30, 0);
 
         ptrSongFile.write(toWrite, content.length());
 
