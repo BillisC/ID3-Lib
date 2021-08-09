@@ -7,7 +7,7 @@
 
 #include "../../../include/ID3/v2/ID3v2.h"
 
-// -------------------------------------- Write --------------------------------------//
+// -------------------------------------- Write -------------------------------------- //
 
 void ID3v2::writeFile(const char *bufferTagHeader, const char *bufferFrames, const uint32_t &bufferFramesSize, const char *bufferNewFrame, const uint32_t &bufferNewFrameSize, const char *bufferSongData, const uint32_t &bufferSongDataSize, const int addPadding){
     ptrSongFile.close();
@@ -30,7 +30,7 @@ void ID3v2::writeFile(const char *bufferTagHeader, const char *bufferFrames, con
 }
 
 
-// ------------------------------------- Buffers -------------------------------------//
+// ------------------------------------- Buffers ------------------------------------- //
 
 char *ID3v2::bufferSong(uint32_t &bufferSongSize){
     uint32_t fileSize = std::filesystem::file_size(songPath);

@@ -11,11 +11,14 @@ This library is able to read, write and remove data on both ID3v1 and ID3v2. To 
   -> <b>Writes:</b> ID3v1, ID3v2.3, ID3v2.4</br>
   -> <b>Removes:</b> ID3v1, ID3v2.3, ID3v2.4</br>
 
-<h2>How to include this library?</h2>
-First download the files in your main project folder and then simply include the following files:</br>
-<b>#include "/include/ID3v1.h"</b></br>
-<b>#include "/include/ID3v2.h"</b></br>
-Both are optional and are not dependent of each other so you can use just v2 or v1
+<h2>How to build this library?</h2>
+In the downloaded project folder run the following:</br>
+  $ cmake .</br>
+  $ cmake --build .</br>
+After that copy <b>libid3tag.a</b> and the <b>header files under include/</b> to your lib and include folders.</br>
+The header files that should be included in your project are: <b>ID3v1.h</b> and <b>ID3v2.h</b></br>
+To use the library in your executable add these to the linker options (the second one is needed for some conversion functions):</br>
+  $ -l id3tag -l ws2_32</br>
 
 <h2>How to use this library?</h2>
 <h3>ID3v1</h3>
@@ -28,7 +31,7 @@ For initialization you have to use the song's path as a string parameter (e.g. <
 -> remove(Tag's name). Removes the specified tag. Parameter has to be a string. Returns false when file / tag / tag name doesn't exist</br>
 -> removeAll(). Removes the whole ID3 tag. Returns false when file / tag doesn't exist</br>
 The allowed tag names are: TITLE, ARTIST, ALBUM, YEAR, COMMENT, GENRE. So for example if you want to change the title you simply have to write: <b>{class_object_name}.set("TITLE", "New title");</b>
-For a list of genres check this: https://en.wikipedia.org/wiki/ID3#standard (Winamp <b>not</b> included)</b>
+For a list of genres check this: https://en.wikipedia.org/wiki/ID3#standard (Winamp <b>not</b> included)</br>
 
 <h3>ID3v2</h3>
 v2's syntax is very similar to v1's.</br>
