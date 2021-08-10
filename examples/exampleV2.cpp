@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 
 #include "../include/v2/ID3v2.h"
 
@@ -34,7 +35,7 @@ int main(){
     }
     else {
         std::cout << "\nNo ID3 tags detected";
-        // Automatically creates ID3 tag with the specified frame if it doesn't exist
+        // Automatically creates ID3 tag with the specified frame
         if(!id2->set("TIT2", "New Title")) std::cout << "\nSet failed";
     }
 
