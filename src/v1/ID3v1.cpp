@@ -1,4 +1,4 @@
-#include "../../../include/ID3/v1/ID3v1.h"
+#include "../../include/v1/ID3v1.h"
 
 ID3v1::ID3v1(const std::string &songPath){
     this->songPath = songPath;

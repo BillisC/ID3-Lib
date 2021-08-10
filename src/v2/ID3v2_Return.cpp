@@ -1,4 +1,4 @@
-#include "../../../include/ID3/v2/ID3v2.h"
+#include "../../include/v2/ID3v2.h"
 
 // ------------------------------------- Frames ------------------------------------- //
 
@@ -35,7 +35,6 @@ std::string ID3v2::readTIF(const unsigned int &cPos, const uint32_t &frSize){
         count = contentSize;
         ptrSongFile.read(reinterpret_cast<char *>(frameContent), count);
     }
-
 
     // Return data converted to string
     if(frameContent[count - 1] == '\0') return ch2str(frameContent, count - 1);

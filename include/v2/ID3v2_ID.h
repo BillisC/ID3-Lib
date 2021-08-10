@@ -25,6 +25,7 @@ namespace ID3v2_2{
         RVA,        // Relative volume adjustment
         SLT,        // Synchronized lyric/text
         STC,        // Synced tempo codes
+        
         TAL,        // Album/Movie/Show title
         TBP,        // BPM (Beats Per Minute)
         TCM,        // Composer
@@ -61,8 +62,10 @@ namespace ID3v2_2{
         TXT,        // Lyricist/text writer
         TXX,        // User defined text information frame
         TYE,        // Year
+        
         UFI,        // Unique file identifier
         ULT,        // Unsychronized lyric/text transcription
+        
         WAF,        // Official audio file webpage
         WAR,        // Official artist/performer webpage
         WAS,        // Official audio source webpage

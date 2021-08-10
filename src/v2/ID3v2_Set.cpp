@@ -5,7 +5,7 @@
 #include <arpa/inet.h>
 #endif
 
-#include "../../../include/ID3/v2/ID3v2.h"
+#include "../../include/v2/ID3v2.h"
 
 // -------------------------------------- Write -------------------------------------- //
 

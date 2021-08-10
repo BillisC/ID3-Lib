@@ -2,7 +2,7 @@
 #define ID3V1_H
 
 #include <fstream>
-#include "../../tools.h"
+#include "../tools.h"
 
 // ID3v1.1 tags are always placed 128 bytes before the file's end 
 

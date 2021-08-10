@@ -6,7 +6,7 @@
 #include <fstream>
 #include <unordered_map>
 
-#include "../../tools.h"
+#include "../tools.h"
 
 #include "ID3v2_ID.h"
 #include "ID3v2_Structs.h"
@@ -93,7 +93,5 @@ private:
     char *newFrameCOM(const std::string &newFrameID, const std::string &content, uint32_t &newFullFrameSize, const short int &tagVersion);
     
 };
-
-inline int ID3v2::_DefaultSetVersion = 3;
 
 #endif

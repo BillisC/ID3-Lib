@@ -5,7 +5,9 @@
 #include <arpa/inet.h>
 #endif
 
-#include "../../../include/ID3/v2/ID3v2.h"
+#include "../../include/v2/ID3v2.h"
+
+int ID3v2::_DefaultSetVersion = 3;
 
 ID3v2::ID3v2(const std::string &songPath){
     this->songPath = songPath;

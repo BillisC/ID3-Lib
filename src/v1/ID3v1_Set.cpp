@@ -1,6 +1,6 @@
 #include <filesystem>
 
-#include "../../../include/ID3/v1/ID3v1.h"
+#include "../../include/v1/ID3v1.h"
 
 // ------------------------------------- Tags ------------------------------------- //
 
