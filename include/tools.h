@@ -1,5 +1,7 @@
 #ifndef TOOLS_H
 #define TOOLS_H
+#include <iostream>
+
 
 // Convert a sync-safe int to a normal int
 inline uint32_t to_unsync(const uint32_t &sync_safe){
@@ -36,7 +38,7 @@ inline uint32_t to_sync(const uint32_t &not_sync_safe)
 }
 
 // Convert a string to an unsigned char (8 bit)
-inline char *str2ch(std::string str, unsigned int max, int offset){
+inline char *str2ch(const std::string str, const unsigned int max, const int offset){
     char *ch = new char[max];
 
     unsigned int count = 0;
@@ -50,7 +52,7 @@ inline char *str2ch(std::string str, unsigned int max, int offset){
     return ch;
 }
 
-inline std::string ch2str(char ch[], unsigned int max){
+inline std::string ch2str(const char ch[], const unsigned int max){
     std::string str;
 
     for(unsigned int i = 0; i < max; i++){
@@ -58,6 +60,28 @@ inline std::string ch2str(char ch[], unsigned int max){
     }
 
     return str;
+}
+
+inline std::wstring UTF16_Reader(const wchar_t wch[], const unsigned int &max){    
+    std::wstring wstr;
+    wchar_t BOM = wch[0];
+    if(BOM != 0xFFFE && BOM != 0xFEFF) return L"";
+
+    for(int i = 1; i < max; i++){
+        if(wch[i] == L'\0') break;
+
+        if(BOM == 0xFFFE){
+            wchar_t LE_wch = L'\0';
+            LE_wch |= wch[i] >> 8;
+            LE_wch |= (wch[i] & 0x00FF) << 8;
+            wstr.push_back(LE_wch);
+        }
+        else{
+            wstr.push_back(wch[i]);
+        }
+    }
+    
+    return wstr;
 }
 
 #endif

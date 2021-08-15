@@ -77,7 +77,9 @@ bool ID3v2::processTagHeader(){
     if(((tagHeader.flags >> 7) & 1) == 1) std::cout << "\nThe tag is unsynchronised";
 
     if(tagHeader.ver[0] == 0x02){
-        if(((tagHeader.flags >> 6) & 1) == 1) return false; // Compression means tag read failure
+        totalFrames = 62; // Additionaly set total frame number
+
+        if(((tagHeader.flags >> 6) & 1) == 1) return false; // Compression not supported
         if((tagHeader.flags << 2) == 1) std::cout << "\nThe tag may be corrupted!";
     }
     else if(tagHeader.ver[0] == 0x03){
@@ -106,9 +108,13 @@ void ID3v2::processExtendedTagHeader(){
         // Read extended header size
         ptrSongFile.read(reinterpret_cast<char *>(&e3TagHeader->eSize), 4);
         // Read extended header flags
-        ptrSongFile.read(reinterpret_cast<char *>(&e3TagHeader->eFlags), 2);
+        ptrSongFile.read(reinterpret_cast<char *>(e3TagHeader->eFlags), 2);
         // Read extended header flags
         ptrSongFile.read(reinterpret_cast<char *>(&e3TagHeader->padSize), 4);
+        // Check if CRC data is present
+        if((e3TagHeader->eFlags[0] >> 7) == 1){
+            ptrSongFile.read(reinterpret_cast<char *>(&e3TagHeader->crc), 4);
+        }
     }
 
     // Extended tag header for v2.4
@@ -121,6 +127,14 @@ void ID3v2::processExtendedTagHeader(){
         ptrSongFile.read(reinterpret_cast<char *>(&e4TagHeader->numFlags), 1);
         // Read extended header flags
         ptrSongFile.read(reinterpret_cast<char *>(&e4TagHeader->eFlags), 1);
+        // Check if CRC data is present
+        if((e3TagHeader->eFlags[0] >> 5) & 1 == 1){
+            ptrSongFile.read(reinterpret_cast<char *>(e4TagHeader->crc), 5);
+        }
+        // Check if tag restrictions flag is present
+        if((e3TagHeader->eFlags[0] >> 4) & 1 == 1){
+            ptrSongFile.read(reinterpret_cast<char *>(&e4TagHeader->restrictFlag), 1);
+        }
     }
 }
 

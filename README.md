@@ -32,10 +32,10 @@ To link the library with your executable add these to the linker's options (the 
 ### ID3v1
 **Class:** ID3v1  
 **Parameters:** The song's path as a string  
-**Functions:**   
+**Functions:**  
 - ```processTags()``` is the main function that must be called before all else. Returns false if file / tag doesn't exist.</br>
 - ```set("Tag's name", "Tag's value")``` Adds/Rewrites the specified tag with the value you provide. Parameters have to be strings. Returns false when file / tag / tag  name doesn't exist.  
-- ```read("Tag's name")``` returns a string with the content of the specified tag. Parameter has to be a string. Returns error string when file / tag / tag name doesn't exist.  
+- ```get("Tag's name")``` Prints the content of the specified tag. Parameter has to be a string. Returns false when file / tag / tag name doesn't exist.  
 - ```remove("Tag's name")``` removes the specified tag. Parameter has to be a string. Returns false when file / tag / tag name doesn't exist.  
 - ```removeAll()``` removes the whole ID3 tag. Returns false when file / tag doesn't exist.  
 
@@ -48,7 +48,8 @@ For a full list of genres see this: https://en.wikipedia.org/wiki/ID3#standard (
 **Functions:**  
 - ```processTags()``` is the main function that must be called before all else. Returns false if file / tag doesn't exist or if there is compression detected in the header flags.  
 - ```set("Frame's name", "Frame's value")``` sets the specified tag with the value you provide. Parameters have to be strings. Returns false when file / tag / frame doesn't exist.  
-- ```read("Frame's name")``` returns a string with the content of the specified tag. Parameter has to be a string. Returns error string when file / tag / frame doesn't exist.  
+- ```get("Frame's name")``` Prints the content of the specified tag. Parameter has to be a string. Returns false when file / tag / frame doesn't exist.  
+- ```getImage(imageSize)``` Returns a pointer to image's raw data. Parameter is an int that's gonna hold the image size once the function finishes. Returns nullptr when file / tag / frame doesn't exist.
 - ```remove("Frame's name")``` removes the specified tag. Parameter has to be a string. Returns false when file / tag / frame doesn't exist.  
 - ```removeAll()``` removes the whole ID3 tag. Returns false when file / tag doesn't exist.  
 
@@ -62,7 +63,6 @@ The frame names for ID3v2.4 can be found there: https://id3.org/id3v2.4.0-frames
 int ID3v2::_DefaultVersion = 4;
 ``` 
 If a wrong version value is inserted then the default will stay at v2.3.  
-- **Important:** If you want to set the picture frame (**"PIC"** / **"APIC"**) then in the content parameter you have to provide the image's path.
-Also in the `read()` function the returned string is just raw image data. You can convert them to a char and then write them in a file to make them usable if your only purpose is to get the image file. I have already made a converter called `str2ch(std::string str, int max, int offset)` and is already included in the library
-- The only allowed frames that can be read / set on v2 (for now) are all the Text Information Frames (excluding **"TXXX"** and **"TXX"**), the **"APIC"** / **"PIC"** image frame, the **"COMM"** / **"COM"** comment frame and all the URL Link Frames (excluding **"WXXX"** and **"WXX"**).  
+- **Important:** If you want to set the picture frame (**"PIC"** / **"APIC"**) then in the content parameter you have to provide the image's path. Also in the `getImage(imageSize)` function it's recommended that you initialize the int with the value `0`;
+- The only allowed frames that can be read / set on v2 (for now) are all the Text Information Frames (excluding **"TXXX"** and **"TXX"**), the **"APIC"** / **"PIC"** image frame (through `getImage(imageSize)`), the **"COMM"** / **"COM"** comment frame and all the URL Link Frames (excluding **"WXXX"** and **"WXX"**).  
 - This library won't support unsynchronization because it's no longer needed.  

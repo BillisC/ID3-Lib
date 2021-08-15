@@ -14,6 +14,7 @@ struct ID3v2_3_ExtendedTagHeader{
     uint32_t eSize;
     char eFlags[2];
     uint32_t padSize;
+    char crc[4];
 };
 
 // Extended tag header for v2.4
@@ -21,6 +22,8 @@ struct ID3v2_4_ExtendedTagHeader{
     uint32_t eSize;
     char numFlags;
     char eFlags;
+    char crc[5];
+    char restrictFlag;
 };
 
 // Frame header for v2.2

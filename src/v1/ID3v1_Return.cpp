@@ -1,4 +1,5 @@
 #include "../../include/v1/ID3v1.h"
+#include <iostream>
 
 // ------------------------------------- Tags ------------------------------------- //
 
@@ -132,20 +133,38 @@ std::string ID3v1::readGenre(){
 
 // ------------------------------------- Return ------------------------------------- //
 
-std::string ID3v1::get(const std::string &whatID){
+bool ID3v1::get(const std::string &whatID){
     // Check if file exists
-    if(!fileExists) return "File Error";
+    if(!fileExists) return false;
 
     // Check if tag exists
-    if(!tagExists) return "ID3 Missing";
+    if(!tagExists) return false;
     
     // Search for tag
-    if(whatID == "TITLE")         return readTitle();
-    else if(whatID == "ARTIST")   return readArtist();
-    else if(whatID == "ALBUM")    return readAlbum();
-    else if(whatID == "COMMENT")  return readComment();
-    else if(whatID == "YEAR")     return readYear();
-    else if(whatID == "GENRE")    return readGenre();  // Does not include Winamp's extensions
-
-    return "Invalid tag";
+    if(whatID == "TITLE"){
+        std::cout << readTitle();
+        return true;
+    }         
+    else if(whatID == "ARTIST"){
+        std::cout << readArtist();
+        return true;
+    }
+    else if(whatID == "ALBUM"){
+        std::cout << readAlbum();
+        return true;
+    }    
+    else if(whatID == "COMMENT"){
+        std::cout << readComment();
+        return true;
+    }
+    else if(whatID == "YEAR"){
+        std::cout << readYear();
+        return true;
+    }     
+    else if(whatID == "GENRE"){
+        std::cout << readGenre();  // Does not include Winamp's extensions
+        return true;
+    }
+    
+    return false;
 }

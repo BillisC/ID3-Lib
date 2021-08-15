@@ -45,7 +45,8 @@ public:
     bool processTags();
 
     // Read frames
-    std::string get(const std::string &whatID);
+    bool get(const std::string &whatID);
+    char *getImage(int &imageSize);
 
     // Set frames
     bool set(const std::string &whatID, const std::string &content);
@@ -75,10 +76,10 @@ private:
     std::string checkTagType(const ID3v2_4::FrameID &frameID);
 
     // Read frame content
-    std::string readTIF(const unsigned int &cPos, const uint32_t &frSize);
-    std::string readULF(const unsigned int &cPos, const uint32_t &frSize);
-    std::string readPIC(const unsigned int &cPos, const uint32_t &frSize);
-    std::string readCOM(const unsigned int &cPos, const uint32_t &frSize);
+    void readTIF(const unsigned int &cPos, const uint32_t &frSize);
+    void readULF(const unsigned int &cPos, const uint32_t &frSize);
+    void readCOM(const unsigned int &cPos, const uint32_t &frSize);
+    char *readPIC(const unsigned int &cPos, const uint32_t &frSize, int &imageSize);
 
     // Write
     void writeFile(const char *bufferTagHeader, const char *bufferFrames, const uint32_t &bufferFramesSize, const char *bufferNewFrame, const uint32_t &bufferNewFrameSize, const char *bufferSongData, const uint32_t &bufferSongDataSize, const int addPadding);
@@ -91,7 +92,7 @@ private:
     char *newFrameULF(const std::string &newFrameID, const std::string &content, uint32_t &newFullFrameSize, const short int &tagVersion);
     char *newFramePIC(const std::string &newFrameID, const std::string &imagePath, uint32_t &newFullFrameSize, const short int &tagVersion);
     char *newFrameCOM(const std::string &newFrameID, const std::string &content, uint32_t &newFullFrameSize, const short int &tagVersion);
-    
+
 };
 
 #endif

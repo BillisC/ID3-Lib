@@ -34,7 +34,7 @@ public:
     bool processTags();
 
     // Return tags
-    std::string get(const std::string &whatID);
+    bool get(const std::string &whatID);
 
     // Set tags
     bool set(const std::string &whatID, const std::string content);
