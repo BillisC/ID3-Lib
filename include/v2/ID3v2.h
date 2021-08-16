@@ -83,7 +83,7 @@ private:
 
     // Write
     void writeFile(const char *bufferTagHeader, const char *bufferFrames, const uint32_t &bufferFramesSize, const char *bufferNewFrame, const uint32_t &bufferNewFrameSize, const char *bufferSongData, const uint32_t &bufferSongDataSize, const int addPadding);
-    
+
     char *bufferSong(uint32_t &bufferSongSize);
     char *newTagHeader(const short int &version, const uint32_t &newTagSize);
     char *bufferFrame(const std::unique_ptr<ID3v2_3_4_FrameHeader> &frHeader);

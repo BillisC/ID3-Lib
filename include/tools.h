@@ -62,12 +62,14 @@ inline std::string ch2str(const char ch[], const unsigned int max){
     return str;
 }
 
-inline std::wstring UTF16_Reader(const wchar_t wch[], const unsigned int &max){    
-    std::wstring wstr;
+inline std::wstring UTF16_Decoder(const wchar_t wch[], const unsigned int &max){    
+    if(max < 2) return L"Invalid encoding";
+    
     wchar_t BOM = wch[0];
-    if(BOM != 0xFFFE && BOM != 0xFEFF) return L"";
-
-    for(int i = 1; i < max; i++){
+    if(BOM != 0xFFFE && BOM != 0xFEFF) return L"Invalid encoding";
+    
+    std::wstring wstr;
+    for(unsigned int i = 1; i < max; i++){
         if(wch[i] == L'\0') break;
 
         if(BOM == 0xFFFE){

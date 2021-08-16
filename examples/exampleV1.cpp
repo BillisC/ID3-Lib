@@ -12,10 +12,14 @@ int main(){
     std::unique_ptr<ID3v1> id1 = std::make_unique<ID3v1>(path);
 
     if(id1->processTags()){
-        std::cout << "\nTitle: " << id1->get("TITLE");
-        std::cout << "\nArtist: " << id1->get("ARTIST");
-        std::cout << "\nAlbum: " << id1->get("ALBUM");
-        std::cout << "\nYear: " << id1->get("YEAR");
+        std::cout << "\nTitle: ";
+        id1->get("TITLE");
+        std::cout << "\nArtist: ";
+        id1->get("ARTIST");
+        std::cout << "\nAlbum: ";
+        id1->get("ALBUM");
+        std::cout << "\nYear: ";
+        id1->get("YEAR");
 
         if(!id1->set("TITLE", "New Title")) std::cout << "\nSet failed";
         if(!id1->remove("TITLE")) std::cout << "\nRemove failed";

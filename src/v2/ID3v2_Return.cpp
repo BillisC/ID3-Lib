@@ -16,11 +16,12 @@ void ID3v2::readTIF(const unsigned int &cPos, const uint32_t &frSize){
         for(int i = 0; i < (frSize-1) / 2; i++){
             ptrSongFile.read(reinterpret_cast<char *>(&wch[i]), 2);
         }
-        std::wcout << UTF16_Reader(wch, (frSize-1) / 2);
+        std::wcout << UTF16_Decoder(wch, (frSize - 1) / 2);
     }
     else{
         char frameContent[frSize - 1];
         ptrSongFile.read(reinterpret_cast<char *>(frameContent), frSize - 1);
+        
         std::cout << ch2str(frameContent, frSize - 1);
     }
 }
@@ -69,7 +70,7 @@ void ID3v2::readCOM(const unsigned int &cPos, const uint32_t &frSize){
         for(int i = 0; i < contentSize / 2; i++){
             ptrSongFile.read(reinterpret_cast<char *>(&wch[i]), 2);
         }
-        std::wcout << UTF16_Reader(wch, contentSize / 2);
+        std::wcout << UTF16_Decoder(wch, contentSize / 2);
     }
     else{
         // Short description

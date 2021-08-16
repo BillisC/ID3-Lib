@@ -55,15 +55,15 @@ int main(){
                 
                 delete[] imgCh;
             }
-            //if(!id2->set("COMM", "New Comment")) std::cout << "\nSet failed";
-            //if(!id2->remove("TIT2")) std::cout << "\nRemove failed";
-            //if(!id2->removeAll()) std::cout << "\nRemove failed";
+            if(!id2->set("COMM", "New Comment")) std::cout << "\nSet failed";
+            if(!id2->remove("TIT2")) std::cout << "\nRemove failed";
+            if(!id2->removeAll()) std::cout << "\nRemove failed";
         }
     }
     else {
         std::cout << "\nNo ID3 tags detected";
         // Automatically creates ID3 tag with the specified frame
-        //if(!id2->set("TIT2", "New Title")) std::cout << "\nSet failed";
+        if(!id2->set("TIT2", "New Title")) std::cout << "\nSet failed";
     }
 
     return 0;
